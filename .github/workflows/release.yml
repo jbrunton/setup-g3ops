@@ -6,15 +6,9 @@ on:
     
 env:
   THIS_RELEASE: ${{ github.event.release.name }}
-  EVENT_INFO: ${{ toJson(github.event) }}
 
 jobs:
 
-  event_info:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo $EVENT_INFO
-  
   update_tag:
     runs-on: ubuntu-latest
     steps:
