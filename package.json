@@ -1,6 +1,5 @@
 {
   "name": "typescript-action",
-  "version": "0.0.0",
   "private": true,
   "description": "TypeScript template action",
   "main": "lib/main.js",
@@ -9,23 +8,21 @@
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
-    "pack": "ncc build",
-    "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run pack && npm test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "package": "ncc build --source-map",
+    "all": "npm run build && npm run format && npm run lint && npm run package",
+    "verify:installed": "node e2e/verify_installed",
+    "verify:output": "node e2e/verify_output"
   },
   "keywords": [
     "actions",
     "node",
     "setup"
   ],
-  "author": "YourNameOrOrganization",
+  "author": "John Brunton",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.4"
+    "@actions/core": "^1.2.6",
+    "@jbrunton/gha-installer": "^0.5.4"
   },
   "devDependencies": {
     "@types/jest": "^26.0.4",
@@ -40,6 +37,7 @@
     "jest-circus": "^26.1.0",
     "js-yaml": "^3.14.0",
     "prettier": "^2.0.5",
+    "shelljs": "^0.8.4",
     "ts-jest": "^26.1.1",
     "typescript": "^3.9.6"
   }

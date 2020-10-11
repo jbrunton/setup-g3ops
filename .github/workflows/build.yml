@@ -1,0 +1,47 @@
+name: build
+
+on:
+  pull_request:
+  push:
+    branches:
+      - develop
+      - 'releases/*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: npm install
+    - run: npm run all
+    - name: check build up to date
+      run: git diff --exit-code --stat HEAD
+
+  test-e2e-all:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: "${{ matrix.os }}"
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ./
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - run: npm install
+    - name: check all apps installed
+      run: npm run verify:installed g3ops
+    - name: check apps are usable
+      run: g3ops --config e2e/.g3ops/config.yml manifest check
+
+  test-e2e-specific-version:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ./
+      with:
+        version: 0.2.9
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - run: npm install
+    - name: check specific version is installed
+      run: npm run verify:output "g3ops version" "g3ops version 0.2.9"

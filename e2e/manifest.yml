@@ -1,0 +1,5 @@
+version: 1.5
+environments:
+  production:
+    host: www.sandbox.example.com
+    version: 1.5

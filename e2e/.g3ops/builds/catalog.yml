@@ -1,0 +1,5 @@
+builds:
+- id: 8bff1d06-1e29-4642-b401-1ac26174ff0b
+  version: "1.5"
+  packageImage: index.docker.io/jbrunton/g3ops-sandbox-config@sha256:3e70b23e4a2e5498b1234c60244590b3af67a9a537bd08c0ac8d108cf0220d02
+  timestamp: 2020-08-26T14:59:15.594845148Z
