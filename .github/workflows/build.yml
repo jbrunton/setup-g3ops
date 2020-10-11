@@ -44,4 +44,4 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
     - run: npm install
     - name: check specific version is installed
-      run: npm run verify:output "g3ops version" "g3ops version 0.1.5"
+      run: npm run verify:output "g3ops version" "g3ops version 0.2.8"
