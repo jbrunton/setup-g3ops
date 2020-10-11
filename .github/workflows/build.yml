@@ -40,8 +40,8 @@ jobs:
     - uses: actions/checkout@v1
     - uses: ./
       with:
-        version: 0.2.8
+        version: 0.2.9
         token: ${{ secrets.GITHUB_TOKEN }}
     - run: npm install
     - name: check specific version is installed
-      run: npm run verify:output "g3ops version" "g3ops version 0.2.8"
+      run: npm run verify:output "g3ops version" "g3ops version 0.2.9"
